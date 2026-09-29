@@ -1,0 +1,197 @@
+/* =========================================================
+   DISEÑO.CSS - Estilo Comida Rápida Maximalista
+   ========================================================= */
+
+/* Importación de fuente moderna y llamativa */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
+
+/* Reset y variables base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-principal: #E52521;  /* Rojo intenso */
+    --color-secundario: #FFC72C; /* Amarillo vibrante */
+    --color-acento: #FF5900;     /* Naranja apetitoso */
+    --color-fondo: #FFF4E0;      /* Crema suave de fondo */
+    --color-texto: #1E1E1E;      /* Oscuro casi negro */
+    --color-tarjeta: #FFFFFF;    /* Blanco para los contenedores */
+    --sombra-maximalista: 6px 6px 0px #1E1E1E; /* Sombra sólida estilo cómic/pop */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    /* Fondo con patrón tipo comida rápida */
+    background-image: radial-gradient(var(--color-secundario) 15%, transparent 16%);
+    background-size: 30px 30px;
+}
+
+/* ---------------------------------------------------------
+   Encabezado Principal (Restaurante)
+   --------------------------------------------------------- */
+h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--color-tarjeta);
+    background-color: var(--color-principal);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 20px;
+    border: 4px solid var(--color-texto);
+    border-radius: 20px;
+    box-shadow: var(--sombra-maximalista);
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    transform: rotate(-1deg);
+}
+
+/* Información del lugar (Lista de detalles) */
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+ul li {
+    background-color: var(--color-secundario);
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 10px 18px;
+    border: 3px solid var(--color-texto);
+    border-radius: 50px;
+    box-shadow: 4px 4px 0px var(--color-texto);
+    display: flex;
+    align-items: center;
+}
+
+/* Resaltar estado Abierto/Cerrado */
+ul li:last-child {
+    background-color: var(--color-acento);
+    color: white;
+}
+
+/* ---------------------------------------------------------
+   Sección de Reseñas
+   --------------------------------------------------------- */
+h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-principal);
+    background-color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 3px solid var(--color-texto);
+    border-radius: 12px;
+    box-shadow: 4px 4px 0px var(--color-texto);
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+/* Contenedor del Autor y Estrellas */
+.autor {
+    display: flex;
+    flex-direction: column; /* Coloca la estrella debajo del nombre */
+    align-items: flex-start;
+    gap: 8px;
+    background-color: var(--color-secundario);
+    padding: 15px 20px;
+    border: 3px solid var(--color-texto);
+    border-radius: 15px 15px 0 0;
+    box-shadow: var(--sombra-maximalista);
+    margin-bottom: 0;
+}
+
+.autor h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-texto);
+}
+
+/* Texto del comentario */
+p {
+    background-color: var(--color-tarjeta);
+    padding: 25px;
+    border: 3px solid var(--color-texto);
+    border-radius: 0 0 15px 15px;
+    border-top: none;
+    box-shadow: var(--sombra-maximalista);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #333;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------
+   Galería de Imágenes (2 en la primera fila, 2 en la segunda)
+   --------------------------------------------------------- */
+
+/* Hacemos que el contenedor de las fotos use Grid */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Agrupamos los enlaces de las imágenes al final */
+body > a {
+    display: inline-block;
+}
+
+/* Creamos la cuadrícula para las 4 imágenes al final del HTML */
+body > a:nth-last-of-type(4),
+body > a:nth-last-of-type(3),
+body > a:nth-last-of-type(2),
+body > a:nth-last-of-type(1) {
+    width: calc(50% - 12px);
+}
+
+/* Ajuste general para la galería de 2x2 */
+@supports (display: grid) {
+    body {
+        display: block; /* Mantiene flujo normal */
+    }
+
+    /* Modificamos las etiquetas 'a' que contienen las imágenes de comida */
+    body > a[href*="ibb.co"] {
+        display: inline-block;
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+        vertical-align: top;
+    }
+
+    /* Espaciado para la cuadrícula 2x2 */
+    body > a[href*="ibb.co"]:nth-of-type(even) {
+        margin-left: 15px;
+    }
+}
+
+/* Estilo maximalista de cada foto */
+body > a[href*="ibb.co"] img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border: 4px solid var(--color-texto);
+    border-radius: 18px;
+    box-shadow: var(--sombra-maximalista);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+}
+
+/* Efecto hover interactivo */
+body > a[href*="ibb.co"] img:hover {
+    transform: translate(-3px, -3px) scale(1.02);
+    box-shadow: 9px 9px 0px var(--color-principal);
+}
